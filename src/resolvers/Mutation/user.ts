@@ -5,7 +5,7 @@ import { Context, getUserId } from '../../utils';
 const User = {
 	async signup(parent, args, ctx: Context): Promise<any> {
 		const password = await bcrypt.hash(args.password, 10);
-		const user = await ctx.photon.users.create({ ...args, password });
+		const user = await ctx.photon.users.create({ data: { ...args, password } });
 		console.log(ctx.request.files.avatar || ctx.request.files.avatar[0].key);
 		return {
 			token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),
