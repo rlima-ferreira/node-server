@@ -1,5 +1,14 @@
-import User from './user';
+// Query
+import UserQuery from './Query/user';
+
+// Mutation
+import UserMutation from './Mutation/user';
 
 export default {
-	User,
+	Query: {
+		...UserQuery,
+	},
+	Mutation: {
+		...UserMutation,
+	},
 };

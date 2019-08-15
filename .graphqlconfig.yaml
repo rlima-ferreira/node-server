@@ -1,0 +1,3 @@
+projects:
+  server:
+    schemaPath: src/schema.graphql
