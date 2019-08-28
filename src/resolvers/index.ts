@@ -1,14 +1,10 @@
-// Query
-import UserQuery from './Query/user';
-
-// Mutation
-import UserMutation from './Mutation/user';
+import { QueryUser, MutationUser } from './user';
 
 export default {
 	Query: {
-		...UserQuery,
+		...QueryUser,
 	},
 	Mutation: {
-		...UserMutation,
+		...MutationUser,
 	},
 };
