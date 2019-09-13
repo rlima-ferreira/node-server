@@ -3,6 +3,12 @@ import * as jwt from 'jsonwebtoken';
 import { Context, getUserId } from '../utils';
 
 export const QueryUser = {
+	async user(parent, args, ctx: Context): Promise<any> {
+		const id = getUserId(ctx);
+		const user = await ctx.photon.users.findOne({ where: { id } });
+		return user;
+	},
+
 	async login(parent, { email, password }, ctx: Context): Promise<any> {
 		const user = await ctx.photon.users.findOne({ where: { email } });
 		if (!user) {
@@ -15,7 +21,7 @@ export const QueryUser = {
 		}
 
 		return {
-			token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),
+			token: jwt.sign({ userId: user.id }, process.env.SECRET),
 			user,
 		};
 	},
@@ -27,7 +33,7 @@ export const MutationUser = {
 		const user = await ctx.photon.users.create({ data: { ...args, password } });
 		console.log(ctx.request.files.avatar || ctx.request.files.avatar[0].key);
 		return {
-			token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),
+			token: jwt.sign({ userId: user.id }, process.env.SECRET),
 			user,
 		};
 	},
