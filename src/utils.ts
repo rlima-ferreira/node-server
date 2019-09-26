@@ -1,5 +1,5 @@
 import * as jwt from 'jsonwebtoken';
-import Photon from '@generated/photon';
+import Photon from '../photon';
 
 export interface Context {
   photon: Photon;
@@ -12,7 +12,7 @@ export class AuthError extends Error {
 	}
 }
 
-export function getUserId(ctx: Context) {
+export function getUserId(ctx: Context): Promise<any> {
 	const Authorization = ctx.request.get('Authorization');
 	if (Authorization) {
 		const token = Authorization.replace('Bearer ', '');
