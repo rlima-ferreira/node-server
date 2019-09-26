@@ -1,9 +1,11 @@
 import * as env from 'dotenv';
 import { GraphQLServer } from 'graphql-yoga';
-import photon from '../photon';
+import Photon from '../photon';
 import resolvers from './resolvers';
 
 env.config();
+
+const photon = new Photon();
 
 const server = new GraphQLServer({
 	typeDefs: './schema.graphql',

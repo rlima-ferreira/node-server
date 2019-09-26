@@ -1,11 +1,11 @@
 datasource db {
   provider = "{PROVIDER}"
-  url      = env("CONECTIONSTRING")
+  url      = env("CONNECTIONSTRING")
 }
 
 generator photon {
   provider = "photonjs"
-  output   = "../photon"
+  output   = "../@generated/photon"
 }
 
 model User {
