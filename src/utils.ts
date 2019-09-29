@@ -1,5 +1,5 @@
 import * as jwt from 'jsonwebtoken';
-import Photon from '../photon';
+import Photon from '../@generated/photon';
 
 export interface Context {
   photon: Photon;

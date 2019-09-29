@@ -1,6 +1,6 @@
 import * as env from 'dotenv';
 import { GraphQLServer } from 'graphql-yoga';
-import Photon from '../photon';
+import Photon from '../@generated/photon';
 import resolvers from './resolvers';
 
 env.config();
