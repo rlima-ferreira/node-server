@@ -2,6 +2,7 @@ import * as path from 'path';
 import * as multer from 'multer';
 import * as multerS3 from 'multer-s3';
 import { S3 } from 'aws-sdk';
+import { Context } from '../utils';
 
 // Armazenamento local
 const diskStorage = multer.diskStorage({
@@ -45,4 +46,9 @@ const storage = multer({ storage: storages[process.env.FILESYSTEM] }).fields([
 	{ name: 'photos', maxCount: 9 },
 ]);
 
-export default storage;
+const upload = (resolve, parent, args, ctx: Context) => {
+	storage;
+	return resolve();
+};
+
+export default upload;

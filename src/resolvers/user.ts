@@ -3,7 +3,7 @@ import * as jwt from 'jsonwebtoken';
 import { Context, getUserId } from '../utils';
 
 export const QueryUser = {
-	async user(parent, args, ctx: Context): Promise<any> {
+	async findUser(parent, args, ctx: Context): Promise<any> {
 		const id = getUserId(ctx);
 		const user = await ctx.photon.users.findOne({ where: { id } });
 		return user;

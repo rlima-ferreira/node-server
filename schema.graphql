@@ -13,7 +13,7 @@ type AuthPayload {
 type Query {
 
 	# User
-	user: User
+	findUser: User
 	login(email: String!, password: String!): AuthPayload!
 	
 }

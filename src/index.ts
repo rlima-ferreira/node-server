@@ -2,6 +2,7 @@ import * as env from 'dotenv';
 import { GraphQLServer } from 'graphql-yoga';
 import Photon from '../@generated/photon';
 import resolvers from './resolvers';
+import middlewares from './middlewares';
 
 env.config();
 
@@ -10,10 +11,15 @@ const photon = new Photon();
 const server = new GraphQLServer({
 	typeDefs: './schema.graphql',
 	resolvers,
+	middlewares,
 	context: (request): any => ({
 		...request,
 		photon,
 	}),
 });
 
-server.start(() => console.log('Server is running on http://localhost:4000'));
+server.start({
+	port: 3000,
+	playground: false,
+	endpoint: '/api',
+}, () => console.log('Server is running on http://localhost:3000'));
