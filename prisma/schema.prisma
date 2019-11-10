@@ -1,5 +1,5 @@
 datasource db {
-  provider = "{PROVIDER}"
+  provider = env("PROVIDER")
   url      = env("CONNECTIONSTRING")
 }
 

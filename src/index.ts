@@ -22,4 +22,4 @@ server.start({
 	port: 3000,
 	playground: false,
 	endpoint: '/api',
-}, () => console.log('Server is running on http://localhost:3000'));
+});
